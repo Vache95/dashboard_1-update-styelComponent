@@ -27,8 +27,11 @@ const HeaderMain: FC<headerMainProps> = ({ setHeaderToggle, headerToggle, theme,
         <span></span>
         <span></span>
       </div>
-      <div className={theme !== "dark" ? "headermain__theme" : "headermain__theme them-icon"} onClick={toggleTheme}>
-        {theme !== "dark" ? <Brightness7Icon /> : <Brightness3Icon />}
+      <div className="header__rigth">
+        <span>EN</span> | <span>RU</span>
+        <div className={theme !== "dark" ? "headermain__theme" : "headermain__theme them-icon"} onClick={toggleTheme}>
+          {theme !== "dark" ? <Brightness7Icon /> : <Brightness3Icon />}
+        </div>
       </div>
     </div>
   );
