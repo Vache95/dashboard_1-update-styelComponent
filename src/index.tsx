@@ -4,6 +4,7 @@ import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "theme";
+import './i18n.js';
 import "./style/styles.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
