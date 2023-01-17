@@ -1,6 +1,11 @@
-import PrivateRoute from "hoc";
+import PrivateRoute from "hoc/private";
+import PublicRoute from "hoc/public";
 import HeaderLayout from "layout";
 import ErrorPage from "page/error";
+import Diagram from "page/home/diagram";
+import Dnd from "page/home/dnd";
+import MapComponent from "page/home/map";
+import Soket from "page/home/soket";
 import Todo from "page/home/todo";
 import Signin from "page/signin";
 import { useEffect } from "react";
@@ -10,14 +15,21 @@ const Router = () => {
   useEffect(() => {
     localStorage.setItem("token", "123qqq");
   }, []);
+
   return (
     <Routes>
       <Route path="" element={<PrivateRoute />}>
         <Route path="" element={<HeaderLayout />}>
           <Route index element={<Todo />} />
+          <Route path="dnd" element={<Dnd />} />
+          <Route path="soket" element={<Soket />} />
+          <Route path="diagram" element={<Diagram />} />
+          <Route path="map" element={<MapComponent />} />
         </Route>
       </Route>
-      <Route path="signin" element={<Signin />} />
+      <Route path="" element={<PublicRoute />}>
+        <Route path="signin" element={<Signin />} />
+      </Route>
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
