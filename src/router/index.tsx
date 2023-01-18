@@ -8,10 +8,10 @@ import MapComponent from "page/home/map";
 import Soket from "page/home/soket";
 import Todo from "page/home/todo";
 import Signin from "page/signin";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
-const Router = () => {
+const Router: FC = () => {
   useEffect(() => {
     localStorage.setItem("token", "123qqq");
   }, []);

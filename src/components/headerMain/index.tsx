@@ -4,15 +4,10 @@ import Brightness3Icon from "@mui/icons-material/Brightness3";
 import "./headermain.scss";
 import { NavLink } from "react-router-dom";
 import i18next from "i18next";
-
-type headerMainProps = {
-  setHeaderToggle: (arg: boolean) => any;
-  headerToggle: boolean;
-  theme: string;
-  toggleTheme: () => void;
-};
+import { headerMainProps } from "../../@types/headerMain";
 
 const HeaderMain: FC<headerMainProps> = ({ setHeaderToggle, headerToggle, theme, toggleTheme }) => {
+  
   const burger = (): void => {
     setHeaderToggle(!headerToggle);
     if (headerToggle) {

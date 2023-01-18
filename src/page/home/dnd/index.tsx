@@ -1,6 +1,7 @@
-import React from 'react'
+import { FC } from "react"
 
-const Dnd = () => {
+
+const Dnd:FC = () => {
   return (
     <div>Dnd</div>
   )
