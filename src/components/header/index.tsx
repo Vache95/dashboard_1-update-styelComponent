@@ -15,12 +15,12 @@ const Header: FC<{ theme: string }> = ({ theme }) => {
   };
   return (
     <div className={theme && theme === "dark" ? `dark 	${burgerName}` : burgerName}>
-      <div className={theme === "dark" ? "headeranim__top headeranim__top-dark " : "headeranim__top"}>
-        <h1 className={theme === "dark" ? "h1__dark" : "h1_light"}>{t("description")}</h1>
+      <div className="headeranim__top">
+        <h1>{t("description")}</h1>
       </div>
       <div className="headeranim__content"></div>
-      <div className={theme === "dark" ? "headeranim__bottom headeranim__bottom-dark" : "headeranim__bottom"}>
-        <span className={theme === "dark" ? "headeranim__logout headeranim__logout-dark" : "headeranim__logout"} onClick={logout}>
+      <div className="headeranim__bottom">
+        <span className="headeranim__logout" onClick={logout}>
           {t("logout")}
         </span>
       </div>

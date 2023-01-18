@@ -1,6 +1,7 @@
+import { FC } from "react"
 
 
-const ErrorPage = () => {
+const ErrorPage:FC = () => {
   return (
     <div>ErrorPage</div>
   )
