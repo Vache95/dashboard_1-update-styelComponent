@@ -32,20 +32,37 @@
 .headeranim__content {
   flex: 1 1 100%;
   padding: 0px 20px;
+  ul {
+    margin-top: 20px;
+    padding: 0px 15px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    li {
+      a {
+        color: #000;
+      }
+    }
+  }
   .MuiPaper-root {
     background: none;
-    color: #56b2fb;
+    color: #000;
     box-shadow: none;
   }
   .MuiAccordionSummary-expandIconWrapper {
-    color: #56b2fb;
+    color: #000;
   }
   .MuiAccordionDetails-root {
     .MuiTypography-root {
+      display: flex;
+      flex-direction: column;
       a {
-        color: #56b2fb;
+        color: #000;
       }
     }
+  }
+  .MuiPaper-root::before {
+    background-color: transparent !important;
   }
 }
 .headeranim__bottom {
@@ -64,6 +81,39 @@
 .dark {
   background-color: #051b2e;
   border-right: 2px solid #051b2e !important;
+  .headeranim__content {
+    ul {
+      margin-top: 20px;
+      padding: 0px 15px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 30px;
+      li {
+        a {
+          color: #56b2fb;
+        }
+      }
+    }
+    .MuiPaper-root {
+      background: none;
+      color: #56b2fb;
+      font-size: 20px;
+      box-shadow: none;
+    }
+    .MuiAccordionSummary-expandIconWrapper {
+      color: #56b2fb;
+    }
+    .MuiAccordionDetails-root {
+      .MuiTypography-root {
+        a {
+          color: #56b2fb;
+        }
+      }
+    }
+    .MuiPaper-root::before {
+      background-color: transparent !important;
+    }
+  }
   .headeranim__top {
     border-bottom: 1px solid #56b2fb;
     h1 {
