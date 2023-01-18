@@ -20,7 +20,7 @@ const Router: FC = () => {
     <Routes>
       <Route path="" element={<PrivateRoute />}>
         <Route path="" element={<HeaderLayout />}>
-          <Route index element={<Todo />} />
+          <Route path="todo" element={<Todo />} />
           <Route path="dnd" element={<Dnd />} />
           <Route path="soket" element={<Soket />} />
           <Route path="diagram" element={<Diagram />} />

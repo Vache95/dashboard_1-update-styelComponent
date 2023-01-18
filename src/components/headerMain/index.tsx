@@ -25,7 +25,7 @@ const HeaderMain: FC<headerMainProps> = ({ setHeaderToggle, headerToggle, theme,
         <span></span>
       </div>
       <div className="header__content">
-        <ul>
+        {/* <ul>
           <li>
             <NavLink to="dnd" className={({ isActive }) => (isActive ? "li__active " : undefined)}>
               DND
@@ -41,13 +41,13 @@ const HeaderMain: FC<headerMainProps> = ({ setHeaderToggle, headerToggle, theme,
               Map
             </NavLink>
           </li>
-        </ul>
+        </ul> */}
       </div>
       <div className="header__rigth">
         <span className="en" onClick={() => i18next.changeLanguage("en")}>
           EN{" "}
         </span>{" "}
-        |{" "}
+        <span className="lang-line"/>
         <span className="ru" onClick={() => i18next.changeLanguage("ru")}>
           {" "}
           RU
