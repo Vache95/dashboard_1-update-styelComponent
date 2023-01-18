@@ -46,17 +46,15 @@ const Header: FC<{ theme: string }> = ({ theme }) => {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              <ul>
-                <li>
+           
                   <NavLink to="dnd">DND</NavLink>
-                </li>
-                <li>
+              
+                
                   <NavLink to="soket">Soket</NavLink>
-                </li>
-                <li>
+              
+               
                   <NavLink to="map">Map</NavLink>
-                </li>
-              </ul>
+              
             </Typography>
           </AccordionDetails>
         </Accordion>
