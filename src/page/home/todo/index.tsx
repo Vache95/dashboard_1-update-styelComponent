@@ -6,10 +6,10 @@ import "./todo.scss";
 
 const Todo: FC = () => {
   const { t } = useTranslation();
-  const { theme } = useAppSelector(selectTodo);
+  const ui = useAppSelector(selectTodo);
 
   return (
-    <div className={theme === "darkTodo" ? "todo darkTodo" : "todo"}>
+    <div className={ui?.theme === "darkTodo" ? "todo darkTodo" : "todo"}>
       <h1>{t("learn")}</h1>
     </div>
   );

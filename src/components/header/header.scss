@@ -31,6 +31,22 @@
 }
 .headeranim__content {
   flex: 1 1 100%;
+  padding: 0px 20px;
+  .MuiPaper-root {
+    background: none;
+    color: #56b2fb;
+    box-shadow: none;
+  }
+  .MuiAccordionSummary-expandIconWrapper {
+    color: #56b2fb;
+  }
+  .MuiAccordionDetails-root {
+    .MuiTypography-root {
+      a {
+        color: #56b2fb;
+      }
+    }
+  }
 }
 .headeranim__bottom {
   width: 100%;
