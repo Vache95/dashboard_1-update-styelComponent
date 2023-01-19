@@ -1,0 +1,25 @@
+.diagram {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+.diagram__item-part1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-part1-line {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item-part1-colum {
+  width: 400px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

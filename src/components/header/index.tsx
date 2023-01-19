@@ -37,9 +37,9 @@ const Header: FC<{ theme: string }> = ({ theme }) => {
           <li>
             <NavLink to="dnd">DND</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="soket">Soket</NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="map">Map</NavLink>
           </li>
@@ -49,20 +49,20 @@ const Header: FC<{ theme: string }> = ({ theme }) => {
           <li>
             <NavLink to="Form">Form</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="chat">Chat</NavLink>
-          </li>
-          <li>
-            <NavLink to="jss">Jss</NavLink>
-          </li>
-          <li>
-            <NavLink to="stylecomponent">StyleComponent</NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="materialui">MaterialUi</NavLink>
           </li>
           <li>
             <NavLink to="grafhql">GrafhQl</NavLink>
+          </li>
+          <li>
+            <NavLink to="game">Game</NavLink>
+          </li>
+          <li>
+            <NavLink to="profile">Profile</NavLink>
           </li>
         </ul>
       </div>
