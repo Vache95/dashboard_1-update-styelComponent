@@ -34,9 +34,9 @@ const Header: FC<{ theme: string }> = ({ theme }) => {
           </AccordionDetails>
         </Accordion>
         <ul>
-          <li>
+          {/* <li>
             <NavLink to="dnd">DND</NavLink>
-          </li>
+          </li> */}
           {/* <li>
             <NavLink to="soket">Soket</NavLink>
           </li> */}
@@ -58,12 +58,12 @@ const Header: FC<{ theme: string }> = ({ theme }) => {
           <li>
             <NavLink to="grafhql">GrafhQl</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="game">Game</NavLink>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <NavLink to="profile">Profile</NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className="headeranim__bottom">
