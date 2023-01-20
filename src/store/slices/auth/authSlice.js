@@ -1,23 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAllOf } from "@reduxjs/toolkit";
 import { initialState } from "./initialState";
 import { authThunk, loginThunk } from "./thunk";
 
 export const authSlice = createSlice({
-  name: "ui",
+  name: "auth",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addMatcher(loginThunk.pending, (state) => {
+      .addMatcher(isAllOf(loginThunk.pending, authThunk.pending), (state) => {
         state.loading = true;
       })
-      .addMatcher(loginThunk.fulfilled, (state, action) => {
+      .addMatcher(isAllOf(loginThunk.fulfilled, authThunk.fulfilled), (state, action) => {
+        console.log(action.payload, "payload");
         state.loading = false;
         state.user = action.payload;
         state.token = localStorage.getItem("token");
         state.refreshToken = localStorage.getItem("refreshtoken");
       })
-      .addMatcher(loginThunk.rejected, (state) => {
+      .addMatcher(isAllOf(loginThunk.rejected, authThunk.rejected), (state) => {
         state.loading = false;
       });
   },

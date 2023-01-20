@@ -1,1 +1,1 @@
-export const LOGIN:string = "/Accounts/LoginWithCode";
+export const LOGIN: string = "/Accounts/LoginWithCode";

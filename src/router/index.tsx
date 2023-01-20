@@ -1,21 +1,23 @@
+import {
+  Chat,
+  Diagram,
+  Dnd,
+  FormPage,
+  Game,
+  GraphQl,
+  Jss,
+  MapComponent,
+  MaterialUi,
+  Profile,
+  Soket,
+  StyleComponent,
+  Todo,
+} from "page/home";
 import PrivateRoute from "hoc/private";
 import PublicRoute from "hoc/public";
 import HeaderLayout from "layout";
 import LoginSignupLayout from "layout/loginSignupLayout/indext";
 import ErrorPage from "page/error";
-import Chat from "page/home/chat";
-import Diagram from "page/home/diagram";
-import Dnd from "page/home/dnd";
-import FormPage from "page/home/form";
-import Game from "page/home/game";
-import GraphQl from "page/home/graphql";
-import Jss from "page/home/jss";
-import MapComponent from "page/home/map";
-import MaterialUi from "page/home/materialUi";
-import Profile from "page/home/profile";
-import Soket from "page/home/soket";
-import StyleComponent from "page/home/styleComponent";
-import Todo from "page/home/todo";
 import Signin from "page/signin";
 import SignUp from "page/signup";
 import { FC } from "react";

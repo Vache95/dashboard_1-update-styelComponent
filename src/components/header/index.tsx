@@ -15,6 +15,7 @@ const Header: FC<{ theme: string }> = ({ theme }) => {
 
   const logout = (): void => {
     localStorage.removeItem("token");
+    localStorage.removeItem("refreshtoken");
     navigate("/signin");
   };
   return (
@@ -64,6 +65,9 @@ const Header: FC<{ theme: string }> = ({ theme }) => {
           {/* <li>
             <NavLink to="profile">Profile</NavLink>
           </li> */}
+          <li>
+            <NavLink to="jss">Portal</NavLink>
+          </li>
         </ul>
       </div>
       <div className="headeranim__bottom">
