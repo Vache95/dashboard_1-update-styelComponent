@@ -5,10 +5,6 @@
   border-right: 2px solid #f1f1f1;
 }
 
-.dark {
-  background-color: #051b2e;
-  border-right: 2px solid #051b2e !important;
-}
 .headeranim {
   background-color: #f4f6f8;
   width: 300px;
@@ -17,12 +13,8 @@
   display: flex;
   flex-direction: column;
   .headeranim__top {
-    .h1_light {
+    h1 {
       font-size: 30px;
-    }
-    .h1__dark {
-      font-size: 30px;
-      color: #0080fa;
     }
   }
 }
@@ -37,11 +29,42 @@
     font-size: 30px;
   }
 }
-.headeranim__top-dark {
-  border-bottom: 1px solid #56b2fb;
-}
 .headeranim__content {
+  overflow-y: auto;
   flex: 1 1 100%;
+  padding: 0px 20px;
+  ul {
+    margin-top: 20px;
+    padding: 0px 15px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    li {
+      a {
+        color: #000;
+      }
+    }
+  }
+  .MuiPaper-root {
+    background: none;
+    color: #000;
+    box-shadow: none;
+  }
+  .MuiAccordionSummary-expandIconWrapper {
+    color: #000;
+  }
+  .MuiAccordionDetails-root {
+    .MuiTypography-root {
+      display: flex;
+      flex-direction: column;
+      a {
+        color: #000;
+      }
+    }
+  }
+  .MuiPaper-root::before {
+    background-color: transparent !important;
+  }
 }
 .headeranim__bottom {
   width: 100%;
@@ -54,10 +77,58 @@
     font-size: 20px;
     cursor: pointer;
   }
-  .headeranim__logout-dark {
-    color: #0080fa;
-  }
 }
-.headeranim__bottom-dark {
-  border-top: 1px solid #56b2fb;
+
+.dark {
+  background-color: #051b2e;
+  border-right: 2px solid #051b2e !important;
+  .headeranim__content {
+    overflow-y: auto;
+    ul {
+      margin-top: 20px;
+      padding: 0px 15px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 30px;
+      li {
+        a {
+          color: #56b2fb;
+        }
+      }
+    }
+    .MuiPaper-root {
+      background: none;
+      color: #56b2fb;
+      font-size: 20px;
+      box-shadow: none;
+    }
+    .MuiAccordionSummary-expandIconWrapper {
+      color: #56b2fb;
+    }
+    .MuiAccordionDetails-root {
+      .MuiTypography-root {
+        a {
+          color: #56b2fb;
+        }
+      }
+    }
+    .MuiPaper-root::before {
+      background-color: transparent !important;
+    }
+  }
+  .headeranim__top {
+    border-bottom: 1px solid #56b2fb;
+    h1 {
+      font-size: 30px;
+      color: #0080fa;
+    }
+  }
+  .headeranim__bottom {
+    border-top: 1px solid #56b2fb;
+    .headeranim__logout {
+      font-size: 20px;
+      cursor: pointer;
+      color: #0080fa;
+    }
+  }
 }

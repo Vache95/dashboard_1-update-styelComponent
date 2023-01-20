@@ -9,12 +9,11 @@ import { changeTeme } from "store/slices/ui/uiSlice";
 const HeaderLayout: FC = () => {
   const [headerToggle, setHeaderToggle] = useState<boolean>(false);
   const { theme, theme2, toggleTheme } = useTheme();
-
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(changeTeme(theme2));
-  }, [theme2, theme]);
-  
+  }, [theme2, theme, dispatch]);
   return (
     <div className="wrapper">
       <Header theme={theme} />

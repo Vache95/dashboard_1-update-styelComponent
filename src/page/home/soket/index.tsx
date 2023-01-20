@@ -1,6 +1,6 @@
-import React from 'react'
+import { FC } from 'react'
 
-const Soket = () => {
+const Soket:FC = () => {
   return (
     <div>Soket</div>
   )
