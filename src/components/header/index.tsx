@@ -35,9 +35,9 @@ const Header: FC<{ theme: string }> = ({ theme }) => {
           </AccordionDetails>
         </Accordion>
         <ul>
-          {/* <li>
+          <li>
             <NavLink to="dnd">DND</NavLink>
-          </li> */}
+          </li>
           {/* <li>
             <NavLink to="soket">Soket</NavLink>
           </li> */}
