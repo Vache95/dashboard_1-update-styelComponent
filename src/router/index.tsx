@@ -10,18 +10,18 @@ import {
   MaterialUi,
   Profile,
   Soket,
-  StyleComponent,
+  Memo,
   Todo,
-} from "page/home";
-import PrivateRoute from "hoc/private";
-import PublicRoute from "hoc/public";
-import HeaderLayout from "layout";
-import LoginSignupLayout from "layout/loginSignupLayout/indext";
-import ErrorPage from "page/error";
-import Signin from "page/signin";
-import SignUp from "page/signup";
-import { FC } from "react";
-import { Route, Routes } from "react-router-dom";
+} from 'page/home';
+import PrivateRoute from 'hoc/private';
+import PublicRoute from 'hoc/public';
+import HeaderLayout from 'layout';
+import LoginSignupLayout from 'layout/loginSignupLayout/indext';
+import ErrorPage from 'page/error';
+import Signin from 'page/signin';
+import SignUp from 'page/signup';
+import { FC } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 const Router: FC = () => {
   return (
@@ -38,7 +38,7 @@ const Router: FC = () => {
           <Route path="grafhql" element={<GraphQl />} />
           <Route path="jss" element={<Jss />} />
           <Route path="materialui" element={<MaterialUi />} />
-          <Route path="stylecomponent" element={<StyleComponent />} />
+          <Route path="memo" element={<Memo />} />
           <Route path="game" element={<Game />} />
           <Route path="profile" element={<Profile />} />
         </Route>

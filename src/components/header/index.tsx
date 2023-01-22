@@ -1,27 +1,27 @@
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import Typography from "@mui/material/Typography";
-import { FC, MouseEventHandler, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { NavLink, useNavigate } from "react-router-dom";
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Typography from '@mui/material/Typography';
+import { FC, MouseEventHandler, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-import "./header.scss";
+import './header.scss';
 
 const Header: FC<{ theme: string }> = ({ theme }) => {
-  const burgerName: any = localStorage.getItem("burger");
+  const burgerName: any = localStorage.getItem('burger');
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   const logout = (): void => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("refreshtoken");
-    navigate("/signin");
+    localStorage.removeItem('token');
+    localStorage.removeItem('refreshtoken');
+    navigate('/signin');
   };
   return (
-    <div className={theme && theme === "dark" ? `dark 	${burgerName}` : burgerName}>
+    <div className={theme && theme === 'dark' ? `dark 	${burgerName}` : burgerName}>
       <div className="headeranim__top">
-        <h1>{t("description")}</h1>
+        <h1>{t('description')}</h1>
       </div>
       <div className="headeranim__content">
         <Accordion>
@@ -50,9 +50,9 @@ const Header: FC<{ theme: string }> = ({ theme }) => {
           <li>
             <NavLink to="Form">Form</NavLink>
           </li>
-          {/* <li>
-            <NavLink to="chat">Chat</NavLink>
-          </li> */}
+          <li>
+            <NavLink to="memo">memo</NavLink>
+          </li>
           <li>
             <NavLink to="materialui">MaterialUi</NavLink>
           </li>
@@ -72,7 +72,7 @@ const Header: FC<{ theme: string }> = ({ theme }) => {
       </div>
       <div className="headeranim__bottom">
         <span className="headeranim__logout" onClick={logout}>
-          {t("logout")}
+          {t('logout')}
         </span>
       </div>
     </div>

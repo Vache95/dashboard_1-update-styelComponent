@@ -9,5 +9,5 @@ export { default as MapComponent } from "./map";
 export { default as MaterialUi } from "./chat";
 export { default as Profile } from "./profile";
 export { default as Soket } from "./soket";
-export { default as StyleComponent } from "./styleComponent";
+export { default as Memo } from "./memo";
 export { default as Todo } from "./todo";
