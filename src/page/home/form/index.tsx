@@ -1,10 +1,13 @@
-import { FC } from "react"
+import { FC } from "react";
+import * as S from "./formStyle";
 
-
-const FormPage:FC = () => {
+const FormPage: FC = () => {
   return (
-    <div>FormPage</div>
-  )
-}
+    <S.FormContainer>
+      <S.ButtonAnimation type='button' >Button</S.ButtonAnimation>
+      <S.StyleLink to='asd'>asdas</S.StyleLink>
+    </S.FormContainer>
+  );
+};
 
-export default FormPage
+export default FormPage;
