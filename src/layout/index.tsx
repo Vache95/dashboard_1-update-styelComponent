@@ -5,6 +5,7 @@ import HeaderMain from "components/headerMain";
 import useTheme from "hook/useTheme";
 import { useAppDispatch } from "store/store";
 import { changeTeme } from "store/slices/ui/uiSlice";
+import { Main, Wrapper } from "style/style";
 
 const HeaderLayout: FC = () => {
   const [headerToggle, setHeaderToggle] = useState<boolean>(false);
@@ -14,14 +15,15 @@ const HeaderLayout: FC = () => {
   useEffect(() => {
     dispatch(changeTeme(theme2));
   }, [theme2, theme, dispatch]);
+
   return (
-    <div className="wrapper">
+    <Wrapper>
       <Header theme={theme} />
-      <main className="main">
+      <Main>
         <HeaderMain setHeaderToggle={setHeaderToggle} headerToggle={headerToggle} theme={theme} toggleTheme={toggleTheme} />
         <Outlet />
-      </main>
-    </div>
+      </Main>
+    </Wrapper>
   );
 };
 

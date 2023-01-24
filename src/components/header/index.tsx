@@ -1,29 +1,34 @@
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import Typography from '@mui/material/Typography';
-import { FC, MouseEventHandler, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { NavLink, useNavigate } from 'react-router-dom';
-
-import './header.scss';
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import Typography from "@mui/material/Typography";
+import { FC } from "react";
+import { useTranslation } from "react-i18next";
+import { NavLink, useNavigate } from "react-router-dom";
+import { headerData } from "./data";
+import * as S from "./headerStyle";
 
 const Header: FC<{ theme: string }> = ({ theme }) => {
-  const burgerName: any = localStorage.getItem('burger');
+  const burgerName: any = localStorage.getItem("burger");
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   const logout = (): void => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('refreshtoken');
-    navigate('/signin');
+    localStorage.removeItem("token");
+    localStorage.removeItem("refreshtoken");
+    navigate("/signin");
   };
+
+  const themeHelpers = (): string => (theme === "dark" ? "#56b2fb" : "#000");
+  const themeBgHelpers = (): string => (theme === "dark" ? "#051b2e" : "#f4f6f8");
+
+  
   return (
-    <div className={theme && theme === 'dark' ? `dark 	${burgerName}` : burgerName}>
-      <div className="headeranim__top">
-        <h1>{t('description')}</h1>
-      </div>
-      <div className="headeranim__content">
+    <S.HeaderAnim headeranim={burgerName} color={themeBgHelpers()}>
+      <S.HeaderAnimTop>
+        <S.HeaderAnimTitle color={themeHelpers()}>{t("description")}</S.HeaderAnimTitle>
+      </S.HeaderAnimTop>
+      <S.HeaderAnimContent color={themeHelpers()}>
         <Accordion>
           <AccordionSummary expandIcon=">" aria-controls="panel1a-content" id="panel1a-header">
             <Typography>Todos</Typography>
@@ -34,48 +39,21 @@ const Header: FC<{ theme: string }> = ({ theme }) => {
             </Typography>
           </AccordionDetails>
         </Accordion>
-        <ul>
-          <li>
-            <NavLink to="dnd">DND</NavLink>
-          </li>
-          {/* <li>
-            <NavLink to="soket">Soket</NavLink>
-          </li> */}
-          <li>
-            <NavLink to="map">Map</NavLink>
-          </li>
-          <li>
-            <NavLink to="diagram">Diagram</NavLink>
-          </li>
-          <li>
-            <NavLink to="Form">Form</NavLink>
-          </li>
-          <li>
-            <NavLink to="memo">memo</NavLink>
-          </li>
-          <li>
-            <NavLink to="materialui">MaterialUi</NavLink>
-          </li>
-          <li>
-            <NavLink to="grafhql">GrafhQl</NavLink>
-          </li>
-          {/* <li>
-            <NavLink to="game">Game</NavLink>
-          </li> */}
-          {/* <li>
-            <NavLink to="profile">Profile</NavLink>
-          </li> */}
-          <li>
-            <NavLink to="jss">Portal</NavLink>
-          </li>
-        </ul>
-      </div>
-      <div className="headeranim__bottom">
-        <span className="headeranim__logout" onClick={logout}>
-          {t('logout')}
-        </span>
-      </div>
-    </div>
+        <S.List>
+          {headerData.map(({ path, text }, index) => (
+            <S.ListItem color={themeHelpers()} key={index}>
+              <NavLink to={path}>{text}</NavLink>
+            </S.ListItem>
+          ))}
+        </S.List>
+      </S.HeaderAnimContent>
+
+      <S.HeaderAnimBottom>
+        <S.HeaderAnimLogout onClick={logout} color={themeHelpers()}>
+          {t("logout")}
+        </S.HeaderAnimLogout>
+      </S.HeaderAnimBottom>
+    </S.HeaderAnim>
   );
 };
 
