@@ -1,25 +1,26 @@
-.diagram {
+import styled from "styled-components";
+
+export const Diagram = styled.div`
   width: 100%;
   height: 100%;
   padding: 20px;
-}
-.diagram__item-part1 {
+`;
+export const DiagramItemPart1 = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.item-part1-line {
+`;
+export const ItemPartLine = styled.div`
   width: 500px;
   height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.item-part1-colum {
+`;
+export const ItemPart1Colum = styled.div`
   width: 400px;
   height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
+`;

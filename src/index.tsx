@@ -7,7 +7,6 @@ import { theme } from "theme";
 import "./language/i18n.ts";
 import { Provider } from "react-redux";
 import { store } from "store/store";
-import "./style/styles.scss";
 import { Global } from "style/style";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);

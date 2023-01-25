@@ -1,4 +1,6 @@
-.signin {
+import styled from "styled-components";
+import { Container } from "components/ui/container";
+export const Signin = styled.div`
   max-width: 100%;
   min-height: 100vh;
   margin: 0px auto;
@@ -7,43 +9,34 @@
   align-items: center;
   justify-content: center;
   position: relative;
-}
-.signin__container {
+`;
+
+export const SigninContainer = styled(Container)`
   width: 100%;
   height: 800px;
   border-radius: 30px;
   display: flex;
   padding: 0px !important;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  -o-border-radius: 30px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-.signin__left {
+`;
+
+export const SigninLeft = styled.div`
   flex: 1 1 50%;
   border-radius: 30px;
-  -webkit-border-radius: 30px 0px 0px 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  -o-border-radius: 30px;
   background-color: #f4f6f8;
-}
-.signin__rigth {
+`;
+
+export const SigninRigth = styled.div`
   flex: 1 1 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.signin__rigth-contents {
+`;
+
+export const SigninRigthContent = styled.div`
   width: 400px;
   height: 300px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
   padding: 20px;
-}
-
+`;
