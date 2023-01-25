@@ -8,7 +8,9 @@ import { authThunk, loginThunk } from "store/slices/auth/thunk";
 import { useAppDispatch, useAppSelector } from "store/store";
 import { emailPattern } from "utils/rules/validation";
 import { FormProps, IFormInput } from "../../@types/loginRegister";
-import "./form.scss";
+import * as S from "./form";
+import * as Sui from "components/ui/form";
+
 
 const Form: FC<FormProps> = ({ login, registers }) => {
   const navigate = useNavigate();
@@ -33,19 +35,19 @@ const Form: FC<FormProps> = ({ login, registers }) => {
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit(onSubmit)}>
-      <h3>{login ? "Login" : "Register"}</h3>
+    <S.FormStyle onSubmit={handleSubmit(onSubmit)}>
+      <S.titleStyle>{login ? "Login" : "Register"}</S.titleStyle>
       {(registers || login) && (
-        <div className="form__email">
-          <input type="text" placeholder="email" {...register("email", { required: true, pattern: emailPattern })} />
-        </div>
+        <S.FormEmail>
+          <Sui.Inputs type="email" placeholder="email" {...register("email", { required: true, pattern: emailPattern })} />
+        </S.FormEmail>
       )}
       {login && (
-        <div className="form__password">
-          <input type="password" placeholder="password" {...register("code", { required: true })} />
-        </div>
+        <S.FormPassword>
+          <Sui.Inputs type="password" placeholder="password" {...register("code", { required: true })} />
+        </S.FormPassword>
       )}
-      <div className="form__button">
+      <S.FormButton>
         <Button variant="text" type="submit">
           {loading ? <CircularProgress size={20} /> : login && !loading ? "Login" : "Register"}
         </Button>
@@ -54,8 +56,8 @@ const Form: FC<FormProps> = ({ login, registers }) => {
             Register
           </Button>
         )}
-      </div>
-    </form>
+      </S.FormButton>
+    </S.FormStyle>
   );
 };
 
