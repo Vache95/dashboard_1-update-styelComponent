@@ -1,44 +1,39 @@
-.form {
+import styled from "styled-components";
+
+export const FormStyle = styled.form`
   width: 100%;
   height: 100%;
-  h3 {
-    margin-bottom: 10px;
-    font-size: 20px;
-    text-align: center;
-  }
-}
-.form__email {
+`;
+
+export const titleStyle = styled.h3`
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-align: center;
+`;
+
+export const FormEmail = styled.div`
   width: 100%;
   height: 40px;
   margin-bottom: 20px;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  input {
-    width: 100%;
-    height: 100%;
-    padding-left: 10px;
-  }
-}
-.form__password {
+`;
+
+export const FormPassword = styled.div`
   width: 100%;
   height: 40px;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+`;
 
-  input {
-    width: 100%;
-    height: 100%;
-    padding-left: 10px;
-  }
-}
-.form__button {
+export const FormButton = styled.div`
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   width: 200px;
   height: 40px;
   margin: 20px auto;
-  button {
+  & > button {
     width: 100%;
     height: 100%;
     background: none;
     border: none;
     margin-bottom: 10px;
   }
-}
+`;

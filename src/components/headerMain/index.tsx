@@ -1,13 +1,11 @@
 import { FC } from "react";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import Brightness3Icon from "@mui/icons-material/Brightness3";
-import "./headermain.scss";
-import { NavLink } from "react-router-dom";
 import i18next from "i18next";
 import { headerMainProps } from "../../@types/headerMain";
+import * as S from "./headeranim";
 
 const HeaderMain: FC<headerMainProps> = ({ setHeaderToggle, headerToggle, theme, toggleTheme }) => {
-  
   const burger = (): void => {
     setHeaderToggle(!headerToggle);
     if (headerToggle) {
@@ -17,46 +15,31 @@ const HeaderMain: FC<headerMainProps> = ({ setHeaderToggle, headerToggle, theme,
     }
   };
 
+  const colorHelpers = (): string => (theme === "dark" ? "#0080fa" : "#000");
+  const colorIconHelpers = (): string => (theme === "dark" ? "#f1f1f1" : "#000");
+  const colorMainHelpers = (): string => (theme === "dark" ? "#051b2e" : "#f4f6f8");
+
   return (
-    <div className={theme === "dark" ? "headermain dark" : "headermain"}>
-      <div className="headermain__burger" onClick={burger}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div className="header__content">
-        {/* <ul>
-          <li>
-            <NavLink to="dnd" className={({ isActive }) => (isActive ? "li__active " : undefined)}>
-              DND
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="soket" className={({ isActive }) => (isActive ? "li__active " : undefined)}>
-              Soket
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="map" className={({ isActive }) => (isActive ? "li__active " : undefined)}>
-              Map
-            </NavLink>
-          </li>
-        </ul> */}
-      </div>
-      <div className="header__rigth">
-        <span className="en" onClick={() => i18next.changeLanguage("en")}>
+    <S.HeaderMain color={colorMainHelpers()}>
+      <S.Burger onClick={burger}>
+        <S.BurgerLine color={colorHelpers()} />
+        <S.BurgerLine color={colorHelpers()} />
+        <S.BurgerLine color={colorHelpers()} />
+      </S.Burger>
+      <S.HeaderRigth>
+        <S.En color={colorHelpers()} onClick={() => i18next.changeLanguage("en")}>
           EN{" "}
-        </span>{" "}
-        <span className="lang-line"/>
-        <span className="ru" onClick={() => i18next.changeLanguage("ru")}>
+        </S.En>{" "}
+        <S.LangLine color={colorHelpers()} />
+        <S.Ru color={colorHelpers()} onClick={() => i18next.changeLanguage("ru")}>
           {" "}
           RU
-        </span>
-        <div className={theme !== "dark" ? "headermain__theme" : "headermain__theme them-icon"} onClick={toggleTheme}>
+        </S.Ru>
+        <S.HeaderMianTheme color={colorIconHelpers()} onClick={toggleTheme}>
           {theme !== "dark" ? <Brightness7Icon /> : <Brightness3Icon />}
-        </div>
-      </div>
-    </div>
+        </S.HeaderMianTheme>
+      </S.HeaderRigth>
+    </S.HeaderMain>
   );
 };
 
