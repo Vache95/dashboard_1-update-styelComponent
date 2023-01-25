@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Area, AreaChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { data, data2 } from "./data";
-import "./diagram.scss";
+import * as S from "./diagram";
 
 const Diagram: FC = () => {
   const gradientOffset = (): number => {
@@ -21,9 +21,9 @@ const Diagram: FC = () => {
   const off = gradientOffset();
 
   return (
-    <div className="diagram">
-      <div className="diagram__item-part1">
-        <div className="item-part1-line">
+    <S.Diagram>
+      <S.DiagramItemPart1>
+        <S.ItemPartLine>
           <LineChart width={400} height={300} data={data}>
             <XAxis dataKey="name" />
             <YAxis />
@@ -32,8 +32,8 @@ const Diagram: FC = () => {
             <Line type="monotone" dataKey="uv" stroke="#8884d8" />
             <Line type="monotone" dataKey="pv" stroke="#82ca9d" />
           </LineChart>
-        </div>
-        <div className="item-part1-colum">
+        </S.ItemPartLine>
+        <S.ItemPart1Colum>
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               width={400}
@@ -59,10 +59,9 @@ const Diagram: FC = () => {
               <Area type="monotone" dataKey="uv" stroke="#000" fill="url(#splitColor)" />
             </AreaChart>
           </ResponsiveContainer>
-        </div>
-      </div>
-      <div className="diagram__item-part2"></div>
-    </div>
+        </S.ItemPart1Colum>
+      </S.DiagramItemPart1>
+    </S.Diagram>
   );
 };
 

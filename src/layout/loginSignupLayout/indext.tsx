@@ -1,19 +1,20 @@
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
-import "./loginsignup.scss";
+import * as S from "./loginsignup";
+
 
 const LoginSignupLayout: FC = () => {
   return (
-    <div className="signin">
-      <div className="signin__container">
-        <div className="signin__left"></div>
-        <div className="signin__rigth">
-          <div className="signin__rigth-contents">
+    <S.Signin>
+      <S.SigninContainer>
+        <S.SigninLeft />
+        <S.SigninRigth>
+          <S.SigninRigthContent>
             <Outlet />
-          </div>
-        </div>
-      </div>
-    </div>
+          </S.SigninRigthContent>
+        </S.SigninRigth>
+      </S.SigninContainer>
+    </S.Signin>
   );
 };
 
