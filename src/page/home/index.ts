@@ -11,3 +11,4 @@ export { default as Profile } from "./profile";
 export { default as Soket } from "./soket";
 export { default as Memo } from "./memo";
 export { default as Todo } from "./todo";
+export { default as RouterTest } from "./router";

@@ -35,4 +35,8 @@ export const headerData: HeaderDataType[] = [
     path: "jss",
     text: "Portal",
   },
+  {
+    path: "router",
+    text: "RouterUpdates",
+  },
 ];

@@ -1,4 +1,9 @@
 import Router from "router";
+import ErrorBoundary from "utils/ErrorBoundary";
 
-const App = () => <Router/>
+const App = () => (
+  <ErrorBoundary>
+    <Router />
+  </ErrorBoundary>
+);
 export default App;
