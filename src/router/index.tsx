@@ -12,20 +12,21 @@ import {
   Soket,
   Memo,
   Todo,
-} from 'page/home';
-import PrivateRoute from 'hoc/private';
-import PublicRoute from 'hoc/public';
-import HeaderLayout from 'layout';
-import LoginSignupLayout from 'layout/loginSignupLayout/indext';
-import ErrorPage from 'page/error';
-import Signin from 'page/signin';
-import SignUp from 'page/signup';
-import { FC } from 'react';
-import { Route, Routes } from 'react-router-dom';
+  RouterTest,
+} from "page/home";
+import PrivateRoute from "hoc/private";
+import PublicRoute from "hoc/public";
+import HeaderLayout from "layout";
+import LoginSignupLayout from "layout/loginSignupLayout/indext";
+import ErrorPage from "page/error";
+import Signin from "page/signin";
+import SignUp from "page/signup";
+import { createBrowserRouter, createRoutesFromChildren, Route, RouterProvider } from "react-router-dom";
+import { blog } from "page/home/router";
 
-const Router: FC = () => {
-  return (
-    <Routes>
+const router = createBrowserRouter(
+  createRoutesFromChildren(
+    <>
       <Route path="" element={<PrivateRoute />}>
         <Route path="" element={<HeaderLayout />}>
           <Route path="todo" element={<Todo />} />
@@ -41,6 +42,7 @@ const Router: FC = () => {
           <Route path="memo" element={<Memo />} />
           <Route path="game" element={<Game />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="router" element={<RouterTest />} loader={blog} errorElement={<ErrorPage />} />
         </Route>
       </Route>
       <Route path="" element={<PublicRoute />}>
@@ -50,8 +52,12 @@ const Router: FC = () => {
         </Route>
       </Route>
       <Route path="*" element={<ErrorPage />} />
-    </Routes>
-  );
+    </>
+  )
+);
+
+const Router = () => {
+  return <RouterProvider router={router} />;
 };
 
 export default Router;
