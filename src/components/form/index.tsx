@@ -11,13 +11,14 @@ import { FormProps, IFormInput } from "../../@types/loginRegister";
 import * as S from "./form";
 import * as Sui from "components/ui/form";
 
-
 const Form: FC<FormProps> = ({ login, registers }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { loading, user } = useAppSelector(selectAuth);
-  const { register, handleSubmit } = useForm<IFormInput>();
+  const { register, handleSubmit } = useForm<IFormInput>( {mode: "onBlur"});
+
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    console.log(data, "data");
     if (registers) {
       dispatch(authThunk({ ...data, languageID: "1" }));
       user && navigate("/signin");
@@ -39,7 +40,12 @@ const Form: FC<FormProps> = ({ login, registers }) => {
       <S.titleStyle>{login ? "Login" : "Register"}</S.titleStyle>
       {(registers || login) && (
         <S.FormEmail>
-          <Sui.Inputs type="email" placeholder="email" {...register("email", { required: true, pattern: emailPattern })} />
+          <Sui.Inputs
+            type="email"
+            placeholder="email"
+          
+            {...register("email", { required: true, pattern: emailPattern })}
+          />
         </S.FormEmail>
       )}
       {login && (
