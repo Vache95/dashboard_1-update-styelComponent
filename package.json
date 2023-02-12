@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.7.7",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.11.0",
@@ -13,8 +14,10 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "axios": "^1.2.3",
+    "graphql": "^16.6.0",
     "i18next": "^22.4.9",
     "i18next-browser-languagedetector": "^7.0.1",
+    "json-graphql-server": "^2.3.2",
     "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,13 +29,16 @@
     "react-scripts": "5.0.1",
     "recharts": "^2.3.2",
     "styled-components": "^5.3.6",
+    "concurrently": "^7.2.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run dev\" \"npm run server\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "react-scripts start",
+    "server":"json-graphql-server db.js --p 4000"
   },
   "eslintConfig": {
     "extends": [
