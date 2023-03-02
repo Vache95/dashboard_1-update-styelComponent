@@ -17,17 +17,17 @@ const initialData = {
     'column-1': {
       id: 'column-1',
       title: 'TO-DO',
-      taskIds: [1, 2, 3, 4, 5, 6],
+      taskIds: [1, 2, 3],
     },
     'column-2': {
       id: 'column-2',
       title: 'IN-PROGRESS',
-      taskIds: [],
+      taskIds: [4],
     },
     'column-3': {
       id: 'column-3',
       title: 'COMPLETED',
-      taskIds: [],
+      taskIds: [5],
     },
   },
   // Facilitate reordering of the columns
@@ -49,10 +49,57 @@ const reorderColumnList = (sourceCol, startIndex, endIndex) => {
 
 const Dnd = () => {
   const [state, setState] = useState(initialData);
-  console.log(state, 'state');
-  const add = () => {
-    setState();
+ 
+  const changednd = (items) => {
+    if (items === 1) {
+      const test = [];
+      const arr = [];
+      for (const property in state.columns) {
+        if (state.columns[property].taskIds.length >= 1) {
+          arr.push(state.columns[property].taskIds);
+          test.push(state.columns[property]);
+        }
+      }
+      const arrMutation = [];
+      if (arr.length === 1) {
+        arrMutation.push(...arr[0]);
+      } else if (arr.length === 2) {
+        arrMutation.push(...arr[0], ...arr[1]);
+      } else if (arr.length === 3) {
+        arrMutation.push(...arr[0], ...arr[1], ...arr[2]);
+      } else if (arr.length === 3) {
+        arrMutation.push(...arr[0], ...arr[1], ...arr[2], ...arr[3]);
+      } else if (arr.length === 4) {
+        arrMutation.push(...arr[0], ...arr[1], ...arr[2], ...arr[3], ...arr[3]);
+      }
+      const tasksarr = [];
+      arrMutation.filter((e) => {
+        for (const property2 in state.tasks) {
+          if (state.tasks[property2].id === e) {
+            tasksarr.push(state.tasks[property2]);
+          }
+        }
+      });
+
+      const obj = {};
+      tasksarr.filter((e) => {
+        obj[e.id] = e;
+      });
+
+      setState({
+        tasks: { ...obj },
+        columns: {
+          'column-1': {
+            id: 'column-1',
+            title: test[0].title,
+            taskIds: arrMutation,
+          },
+        },
+        columnOrder: ['column-1'],
+      });
+    }
   };
+
   const onDragEnd = (result) => {
     const { destination, source } = result;
     console.log(result, 'res');
@@ -112,7 +159,7 @@ const Dnd = () => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="dnd">
-        <span onClick={add}>add</span>
+        {/* <span onClick={add}>add</span> */}
         <div className="dnd__container">
           {state?.columnOrder?.map((columnId) => {
             const column = state.columns[columnId];
@@ -120,6 +167,10 @@ const Dnd = () => {
             return <Column key={column.id} column={column} tasks={tasks} />;
           })}
         </div>
+        <span onClick={() => changednd(1)}>1111</span>
+        <span onClick={() => changednd(2)}>2222</span>
+        <span onClick={() => changednd(3)}>3333</span>
+        <span onClick={() => changednd(4)}>4444</span>
       </div>
     </DragDropContext>
   );
