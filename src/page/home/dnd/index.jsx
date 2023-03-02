@@ -10,8 +10,6 @@ const initialData = {
     3: { id: 3, content: 'Create sidebar navigation menu' },
     4: { id: 4, content: 'Create page footer' },
     5: { id: 5, content: 'Create page navigation menu' },
-    6: { id: 6, content: 'Create page layout' },
-    7: { id: 7, content: 'Create page layout' },
   },
   columns: {
     'column-1': {
@@ -49,7 +47,41 @@ const reorderColumnList = (sourceCol, startIndex, endIndex) => {
 
 const Dnd = () => {
   const [state, setState] = useState(initialData);
- 
+  console.log(state, 'state');
+  const add = () => {
+    const id = 'column-1';
+    const idd = 6;
+    const addarr = [];
+    const addobj = {};
+    for (const property in state.columns) {
+      if (state.columns[property].id === id) {
+        addarr.push([...state.columns[property].taskIds, idd]);
+        addobj[idd] = { id: idd, content: 'test test' };
+      }
+    }
+
+    setState({
+      tasks: { ...state.tasks, ...addobj },
+      columns: {
+        'column-1': {
+          id: 'column-1',
+          title: 'TO-DO',
+          taskIds: [...addarr[0]],
+        },
+        'column-2': {
+          id: 'column-2',
+          title: 'IN-PROGRESS',
+          taskIds: [4],
+        },
+        'column-3': {
+          id: 'column-3',
+          title: 'COMPLETED',
+          taskIds: [5],
+        },
+      },
+      columnOrder: [...state.columnOrder],
+    });
+  };
   const changednd = (items) => {
     if (items === 1) {
       const test = [];
@@ -171,6 +203,7 @@ const Dnd = () => {
         <span onClick={() => changednd(2)}>2222</span>
         <span onClick={() => changednd(3)}>3333</span>
         <span onClick={() => changednd(4)}>4444</span>
+        <span onClick={add}>add</span>
       </div>
     </DragDropContext>
   );
