@@ -20,7 +20,7 @@ const Column = ({ column, tasks }) => {
                     ref={draggableProvided.innerRef}
                     {...draggableProvided.draggableProps}
                     {...draggableProvided.dragHandleProps}>
-                    bhjj
+                    {task.content}
                     {console.log(draggableSnapshot.isDragging, 'draggableSnapshot.isDragging')}
                   </div>
                 )}

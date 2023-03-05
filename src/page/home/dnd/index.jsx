@@ -1,3 +1,4 @@
+import { height } from '@mui/system';
 import { useState, lazy } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 // import Column from './column';
@@ -5,27 +6,27 @@ import './dnd.scss';
 const Column = lazy(() => import('./column'));
 const initialData = {
   tasks: {
-    1: { id: 1, content: 'Configure Next.js application' },
-    2: { id: 2, content: 'Configure Next.js and tailwind ' },
-    3: { id: 3, content: 'Create sidebar navigation menu' },
-    4: { id: 4, content: 'Create page footer' },
-    5: { id: 5, content: 'Create page navigation menu' },
+    1: { id: 1, content: '111' },
+    2: { id: 2, content: '22222' },
+    3: { id: 3, content: '333333' },
+    4: { id: 4, content: '4444444' },
+    5: { id: 5, content: '5555' },
   },
   columns: {
     'column-1': {
       id: 'column-1',
       title: 'TO-DO',
-      taskIds: [1, 2, 3],
+      taskIds: [1, 2],
     },
     'column-2': {
       id: 'column-2',
       title: 'IN-PROGRESS',
-      taskIds: [4],
+      taskIds: [3],
     },
     'column-3': {
       id: 'column-3',
       title: 'COMPLETED',
-      taskIds: [5],
+      taskIds: [4, 5],
     },
   },
   // Facilitate reordering of the columns
@@ -54,12 +55,13 @@ const Dnd = () => {
     const addarr = [];
     const addobj = {};
     for (const property in state.columns) {
+    
       if (state.columns[property].id === id) {
         addarr.push([...state.columns[property].taskIds, idd]);
         addobj[idd] = { id: idd, content: 'test test' };
       }
     }
-
+    console.log(addarr, 'addarr');
     setState({
       tasks: { ...state.tasks, ...addobj },
       columns: {
@@ -71,12 +73,17 @@ const Dnd = () => {
         'column-2': {
           id: 'column-2',
           title: 'IN-PROGRESS',
-          taskIds: [4],
+          taskIds: [],
         },
         'column-3': {
           id: 'column-3',
           title: 'COMPLETED',
-          taskIds: [5],
+          taskIds: [],
+        },
+        'column-4': {
+          id: 'column-4',
+          title: 'COMPLETED',
+          taskIds: [],
         },
       },
       columnOrder: [...state.columnOrder],
@@ -90,6 +97,9 @@ const Dnd = () => {
         if (state.columns[property].taskIds.length >= 1) {
           arr.push(state.columns[property].taskIds);
           test.push(state.columns[property]);
+        } else if (state.columns[property].taskIds.length === 0) {
+          arr.push(state.columns[property].taskIds);
+          test.push(state.columns[property]);
         }
       }
       const arrMutation = [];
@@ -99,10 +109,8 @@ const Dnd = () => {
         arrMutation.push(...arr[0], ...arr[1]);
       } else if (arr.length === 3) {
         arrMutation.push(...arr[0], ...arr[1], ...arr[2]);
-      } else if (arr.length === 3) {
-        arrMutation.push(...arr[0], ...arr[1], ...arr[2], ...arr[3]);
       } else if (arr.length === 4) {
-        arrMutation.push(...arr[0], ...arr[1], ...arr[2], ...arr[3], ...arr[3]);
+        arrMutation.push(...arr[0], ...arr[1], ...arr[2], ...arr[3]);
       }
       const tasksarr = [];
       arrMutation.filter((e) => {
@@ -128,6 +136,156 @@ const Dnd = () => {
           },
         },
         columnOrder: ['column-1'],
+      });
+    } else if (items === 2) {
+      const arr = [];
+      for (const property in state.columns) {
+        if (state.columns[property].taskIds.length >= 1) {
+          arr.push(state.columns[property].taskIds);
+        } else if (state.columns[property].taskIds.length === 0) {
+          arr.push(state.columns[property].taskIds);
+        }
+      }
+      const arrMutation = [];
+      if (arr.length === 1) {
+        arrMutation.push(...arr[0]);
+      } else if (arr.length === 2) {
+        arrMutation.push(...arr[0], ...arr[1]);
+      } else if (arr.length === 3) {
+        arrMutation.push(...arr[0], ...arr[1], ...arr[2]);
+      } else if (arr.length === 4) {
+        arrMutation.push(...arr[0], ...arr[1], ...arr[2], ...arr[3]);
+      }
+      const tasksarr = [];
+      arrMutation.filter((e) => {
+        for (const property2 in state.tasks) {
+          if (state.tasks[property2].id === e) {
+            tasksarr.push(state.tasks[property2]);
+          }
+        }
+      });
+
+      const obj = {};
+      tasksarr.filter((e) => {
+        obj[e.id] = e;
+      });
+      setState({
+        tasks: { ...obj },
+        columns: {
+          'column-1': {
+            id: 'column-1',
+            taskIds: arrMutation,
+          },
+          'column-2': {
+            id: 'column-2',
+            taskIds: [],
+          },
+        },
+        columnOrder: ['column-1', 'column-2'],
+      });
+    } else if (items === 3) {
+      const arr = [];
+      for (const property in state.columns) {
+        if (state.columns[property].taskIds.length >= 1) {
+          arr.push(state.columns[property].taskIds);
+        } else if (state.columns[property].taskIds.length === 0) {
+          arr.push(state.columns[property].taskIds);
+        }
+      }
+      const arrMutation = [];
+      if (arr.length === 1) {
+        arrMutation.push(...arr[0]);
+      } else if (arr.length === 2) {
+        arrMutation.push(...arr[0], ...arr[1]);
+      } else if (arr.length === 3) {
+        arrMutation.push(...arr[0], ...arr[1], ...arr[2]);
+      } else if (arr.length === 4) {
+        arrMutation.push(...arr[0], ...arr[1], ...arr[2], ...arr[3]);
+      }
+      const tasksarr = [];
+      arrMutation.filter((e) => {
+        for (const property2 in state.tasks) {
+          if (state.tasks[property2].id === e) {
+            tasksarr.push(state.tasks[property2]);
+          }
+        }
+      });
+
+      const obj = {};
+      tasksarr.filter((e) => {
+        obj[e.id] = e;
+      });
+      setState({
+        tasks: { ...obj },
+        columns: {
+          'column-1': {
+            id: 'column-1',
+            taskIds: arrMutation,
+          },
+          'column-2': {
+            id: 'column-2',
+            taskIds: [],
+          },
+          'column-3': {
+            id: 'column-3',
+            taskIds: [],
+          },
+        },
+        columnOrder: ['column-1', 'column-2', 'column-3'],
+      });
+    } else if (items === 4) {
+      const arr = [];
+      for (const property in state.columns) {
+        if (state.columns[property].taskIds.length >= 1) {
+          arr.push(state.columns[property].taskIds);
+        } else if (state.columns[property].taskIds.length === 0) {
+          arr.push(state.columns[property].taskIds);
+        }
+      }
+      const arrMutation = [];
+      if (arr.length === 1) {
+        arrMutation.push(...arr[0]);
+      } else if (arr.length === 2) {
+        arrMutation.push(...arr[0], ...arr[1]);
+      } else if (arr.length === 3) {
+        arrMutation.push(...arr[0], ...arr[1], ...arr[2]);
+      } else if (arr.length === 4) {
+        arrMutation.push(...arr[0], ...arr[1], ...arr[2], ...arr[3]);
+      }
+      const tasksarr = [];
+      arrMutation.filter((e) => {
+        for (const property2 in state.tasks) {
+          if (state.tasks[property2].id === e) {
+            tasksarr.push(state.tasks[property2]);
+          }
+        }
+      });
+
+      const obj = {};
+      tasksarr.filter((e) => {
+        obj[e.id] = e;
+      });
+      setState({
+        tasks: { ...obj },
+        columns: {
+          'column-1': {
+            id: 'column-1',
+            taskIds: arrMutation,
+          },
+          'column-2': {
+            id: 'column-2',
+            taskIds: [],
+          },
+          'column-3': {
+            id: 'column-3',
+            taskIds: [],
+          },
+          'column-4': {
+            id: 'column-4',
+            taskIds: [],
+          },
+        },
+        columnOrder: ['column-1', 'column-2', 'column-3', 'column-4'],
       });
     }
   };
@@ -199,11 +357,76 @@ const Dnd = () => {
             return <Column key={column.id} column={column} tasks={tasks} />;
           })}
         </div>
-        <span onClick={() => changednd(1)}>1111</span>
-        <span onClick={() => changednd(2)}>2222</span>
-        <span onClick={() => changednd(3)}>3333</span>
-        <span onClick={() => changednd(4)}>4444</span>
-        <span onClick={add}>add</span>
+        <span
+          style={{
+            width: '100px',
+            height: '30px',
+            display: 'block',
+            float: 'left',
+            border: '1px solid black',
+            padding: '5px',
+            marginRigth: '5px',
+            cursor: 'pointer',
+          }}
+          onClick={() => changednd(1)}>
+          add 1
+        </span>
+        <span
+          style={{
+            width: '100px',
+            height: '30px',
+            display: 'block',
+            float: 'left',
+            border: '1px solid black',
+            padding: '5px',
+            marginRigth: '5px',
+            cursor: 'pointer',
+          }}
+          onClick={() => changednd(2)}>
+          add 2
+        </span>
+        <span
+          style={{
+            width: '100px',
+            height: '30px',
+            display: 'block',
+            float: 'left',
+            border: '1px solid black',
+            padding: '5px',
+            marginRigth: '5px',
+            cursor: 'pointer',
+          }}
+          onClick={() => changednd(3)}>
+          add 3
+        </span>
+        <span
+          style={{
+            width: '100px',
+            height: '30px',
+            display: 'block',
+            float: 'left',
+            border: '1px solid black',
+            padding: '5px',
+            marginRigth: '5px',
+            cursor: 'pointer',
+          }}
+          onClick={() => changednd(4)}>
+          add 4
+        </span>
+        <span
+          style={{
+            width: '100px',
+            height: '30px',
+            display: 'block',
+            float: 'left',
+            border: '1px solid red',
+            padding: '5px',
+            marginRigth: '5px',
+            cursor: 'pointer',
+          }}
+          onClick={add}>
+          add
+        </span>
       </div>
     </DragDropContext>
   );
