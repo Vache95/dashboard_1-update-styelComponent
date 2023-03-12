@@ -49,19 +49,19 @@ const reorderColumnList = (sourceCol, startIndex, endIndex) => {
 const Dnd = () => {
   const [state, setState] = useState(initialData);
   console.log(state, 'state');
+
   const add = () => {
     const id = 'column-1';
     const idd = 6;
     const addarr = [];
     const addobj = {};
     for (const property in state.columns) {
-    
       if (state.columns[property].id === id) {
         addarr.push([...state.columns[property].taskIds, idd]);
         addobj[idd] = { id: idd, content: 'test test' };
       }
     }
-    console.log(addarr, 'addarr');
+
     setState({
       tasks: { ...state.tasks, ...addobj },
       columns: {
@@ -89,6 +89,7 @@ const Dnd = () => {
       columnOrder: [...state.columnOrder],
     });
   };
+
   const changednd = (items) => {
     if (items === 1) {
       const test = [];
@@ -345,7 +346,34 @@ const Dnd = () => {
 
     setState(newState);
   };
+  const deleteFunc = (columName, id) => {
 
+    if (columName.id === 'column-1') {
+      setState({
+        tasks: { ...state.tasks },
+        columns: {
+          ...state.columns,
+          'column-1': {
+            id: 'column-1',
+            title: 'TO-DO',
+            taskIds: [1],
+          },
+
+          // 'column-2': {
+          //   id: 'column-2',
+          //   title: 'IN-PROGRESS',
+          //   taskIds: [...state.columns['column-2'].taskIds],
+          // },
+          // 'column-3': {
+          //   id: 'column-3',
+          //   title: 'COMPLETED',
+          //   taskIds: [...state.columns['column-3'].taskIds],
+          // },
+        },
+        columnOrder: [...state.columnOrder],
+      });
+    }
+  };
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="dnd">
@@ -354,7 +382,7 @@ const Dnd = () => {
           {state?.columnOrder?.map((columnId) => {
             const column = state.columns[columnId];
             const tasks = column?.taskIds?.map((taskId) => state.tasks[taskId]);
-            return <Column key={column.id} column={column} tasks={tasks} />;
+            return <Column key={column.id} column={column} tasks={tasks} deleteFunc={deleteFunc} />;
           })}
         </div>
         <span

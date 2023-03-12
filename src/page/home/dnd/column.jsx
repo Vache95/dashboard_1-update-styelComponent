@@ -1,7 +1,7 @@
 import { Draggable } from 'react-beautiful-dnd';
 import { Droppable } from 'react-beautiful-dnd';
 
-const Column = ({ column, tasks }) => {
+const Column = ({ column, tasks, deleteFunc }) => {
   return (
     <div className="column">
       <Droppable droppableId={column.id}>
@@ -21,7 +21,7 @@ const Column = ({ column, tasks }) => {
                     {...draggableProvided.draggableProps}
                     {...draggableProvided.dragHandleProps}>
                     {task.content}
-                    {console.log(draggableSnapshot.isDragging, 'draggableSnapshot.isDragging')}
+                    <span onClick={() => deleteFunc(column, task.id)}>X</span>
                   </div>
                 )}
               </Draggable>
